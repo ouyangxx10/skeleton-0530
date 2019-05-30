@@ -249,6 +249,7 @@ on_set_power_state(ControlPower *pwr,
 		guint state,
 		gpointer user_data)
 {
+	printf("---wanghp,on_set_power_state 111");
 	Control* control = object_get_control((Object*)user_data);
 	PowerGpio *power_gpio = &g_gpio_configs.power_gpio;
 	if(state > 1)
@@ -336,6 +337,7 @@ on_init(Control *control,
 		GDBusMethodInvocation *invocation,
 		gpointer user_data)
 {
+	printf("---wanghp,on_init 222");
 	pgood_timeout_start = 0;
 	//guint poll_interval = control_get_poll_interval(control);
 	//g_timeout_add(poll_interval, poll_pgood, user_data);
@@ -348,6 +350,7 @@ on_get_power_state(ControlPower *pwr,
 		GDBusMethodInvocation *invocation,
 		gpointer user_data)
 {
+	printf("---wanghp,on_get_power_state 3333");
 	guint pgood = control_power_get_pgood(pwr);
 	control_power_complete_get_power_state(pwr,invocation,pgood);
 	return TRUE;
@@ -520,6 +523,7 @@ main(gint argc, gchar *argv[])
 	cmd.argc = argc;
 	cmd.argv = argv;
 
+	printf("---wanghp,main 444444");
 	guint id;
 	loop = g_main_loop_new(NULL, FALSE);
 
